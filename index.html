@@ -7,20 +7,33 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div>
-      <label for="customname">Enter custom name:</label>
-      <input id="customname" type="text" placeholder="" />
+
+    <nav>
+      <h1><u>SILLY-STORY-GENERATOR</u></h1>
+
+    </nav>
+    
+
+    <div class="container">
+      <div>
+        <label class="Enter-custom-name" for="customname">Enter custom name:</label>
+        <br>
+        <br>
+        <input  id="customname" type="text" placeholder="" />
+      </div>
+      <div>
+        <label class="us" for="us">US</label>
+        <input id="us" type="radio" name="ukus" value="us" checked />
+        <label class="uk" for="uk">UK</label>
+        <input id="uk" type="radio" name="ukus" value="uk" />
+      </div>
+      <div>
+        <button class="randomize">Generate random story</button>
+      </div>
+      <p class="story"></p>
     </div>
-    <div>
-      <label for="us">US</label>
-      <input id="us" type="radio" name="ukus" value="us" checked />
-      <label for="uk">UK</label>
-      <input id="uk" type="radio" name="ukus" value="uk" />
-    </div>
-    <div>
-      <button class="randomize">Generate random story</button>
-    </div>
-    <p class="story"></p>
+
+
     <script src="script.js"></script>
   </body>
 </html>
