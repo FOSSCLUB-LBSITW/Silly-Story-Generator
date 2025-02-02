@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width" />
     <title>Silly Story Generator</title>
     <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Style for the disabled generate button */
+      .randomize:disabled {
+        background-color: #ccc; /* Gray color for the disabled button */
+        cursor: not-allowed; /* Makes the cursor show as 'not allowed' */
+      }
+
+      /* Style for the copy message */
+      .copy-msg {
+        color: green; /* Set the color of the message to green */
+        font-weight: bold; /* Make the text bold for emphasis */
+      }
+    </style>
   </head>
   <body>
 
@@ -16,7 +29,7 @@
       <div>
         <label class="Enter-custom-name" for="customname">Enter custom name:</label>
         <br><br>
-        <input id="customname" type="text" placeholder="" />
+        <input id="customname" type="text" placeholder="Enter your name" />
       </div>
       <div>
         <label class="us" for="us">US</label>
@@ -25,7 +38,7 @@
         <input id="uk" type="radio" name="ukus" value="uk" />
       </div>
       <div>
-        <button class="randomize">Generate random story</button>
+        <button class="randomize" disabled>Generate random story</button>
       </div>
       <p class="story"></p>
       <button class="copy-btn" disabled>Copy Story</button>
@@ -35,10 +48,28 @@
     <script src="script.js"></script>
 
     <script>
+      // Enable or disable the "Generate random story" button based on the input
+      document.getElementById('customname').addEventListener('input', function() {
+        const nameInput = document.getElementById('customname');
+        const randomizeButton = document.querySelector('.randomize');
+
+        if (nameInput.value.trim() === "") {
+          randomizeButton.disabled = true; // Disable the button when input is empty
+        } else {
+          randomizeButton.disabled = false; // Enable the button when input is not empty
+        }
+      });
+
       document.querySelector('.randomize').addEventListener('click', function() {
-        // Get custom name or default to "John Doe"
-        const name = document.getElementById('customname').value || "John Doe";
+        const nameInput = document.getElementById('customname');
+        const name = nameInput.value || "John Doe";
         
+        // Check if the input is empty and disable the button if so
+        if (nameInput.value.trim() === "") {
+          alert("Please enter a custom name!");
+          return;
+        }
+
         // Example story generation logic
         const story = `Once upon a time, there was a person named ${name} who went on an exciting adventure.`;
 
