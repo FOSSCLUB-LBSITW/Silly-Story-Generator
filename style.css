@@ -1,7 +1,19 @@
 body {
   font-family: helvetica, sans-serif;
-  width: 350px;
+  background: black;
+  color: white;
+  margin: 0;
+
 }
+
+.container{
+  height: 720px;
+  width: 100%;
+  background: rgb(0, 0, 0);
+  padding-left: 40%;
+  padding-top: 112px;
+}
+
 
 label {
   font-weight: bold;
@@ -17,8 +29,60 @@ input[type="text"] {
 }
 
 p {
-  background: #ffc125;
-  color: #5e2612;
+  background: #000000;
+  color: #ffffff;
   padding: 10px;
   visibility: hidden;
+  height: 145px;
+  width: 301px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px #A1f400,
+  0px 0px 10px #A1f400 inset;
+}
+.Enter-custom-name{
+  color: #A1f400;
+  font-size: 30px;
+  font-family: initial;
+  padding-bottom: 10px;
+}
+#customname{
+  height: 15px;
+  width: 240px;
+  border-radius: 30px;
+  filter: blur(0px);
+  background: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 15px #A1f400,
+  0px 0px 10px #A1f400 inset;
+  
+}
+.randomize{
+  border: 3px solid #A1f400;
+  box-shadow: 0px 0px 15px #A1f400,
+  0px 0px 15px #A1f400 inset;
+  background: black;
+  color: white;
+  border-radius: 20px;
+}
+.us{
+  color: #A1f400;
+  cursor: pointer;
+}
+.uk{
+  color: #A1f400;
+}
+nav{
+  background: black;
+  height: 50px;
+  width: 100%;
+  color: #A1f400;
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  font-family: ui-monospace;
+  margin-top: 48px;
+}
+nav u{
+  color: #A1f400;
+  height: 1px;
 }
