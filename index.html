@@ -10,16 +10,13 @@
 
     <nav>
       <h1><u>SILLY-STORY-GENERATOR</u></h1>
-
     </nav>
     
-
     <div class="container">
       <div>
         <label class="Enter-custom-name" for="customname">Enter custom name:</label>
-        <br>
-        <br>
-        <input  id="customname" type="text" placeholder="" />
+        <br><br>
+        <input id="customname" type="text" placeholder="" />
       </div>
       <div>
         <label class="us" for="us">US</label>
@@ -31,9 +28,62 @@
         <button class="randomize">Generate random story</button>
       </div>
       <p class="story"></p>
+      <button class="copy-btn" disabled>Copy Story</button>
+      <p class="copy-msg" style="display:none;">Story copied to clipboard!</p>
     </div>
 
-
     <script src="script.js"></script>
+
+    <script>
+      document.querySelector('.randomize').addEventListener('click', function() {
+        // Get custom name or default to "John Doe"
+        const name = document.getElementById('customname').value || "John Doe";
+        
+        // Example story generation logic
+        const story = `Once upon a time, there was a person named ${name} who went on an exciting adventure.`;
+
+        // Display the generated story
+        document.querySelector('.story').textContent = story;
+        
+        // Enable the "Copy Story" button
+        const copyButton = document.querySelector('.copy-btn');
+        copyButton.disabled = false;
+
+        // Clear any previous copy message and keep it hidden
+        const copyMessage = document.querySelector('.copy-msg');
+        copyMessage.style.display = 'none';
+      });
+
+      document.querySelector('.copy-btn').addEventListener('click', function() {
+        // Get the story text
+        const storyText = document.querySelector('.story').textContent;
+
+        // Create a temporary input element to copy the story text
+        const tempInput = document.createElement('input');
+        tempInput.value = storyText;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        
+        // Copy the text to the clipboard using the execCommand method
+        const successful = document.execCommand('copy');
+        document.body.removeChild(tempInput);
+
+        // Only show confirmation message if the copy was successful
+        if (successful) {
+          const copyMessage = document.querySelector('.copy-msg');
+          copyMessage.style.display = 'block';  // Make sure the message is visible
+
+          // Disable the "Copy Story" button after copying
+          const copyButton = document.querySelector('.copy-btn');
+          copyButton.disabled = true;
+
+          // Hide the confirmation message after 2 seconds
+          setTimeout(function() {
+            copyMessage.style.display = 'none';
+          }, 2000);
+        }
+      });
+    </script>
+
   </body>
 </html>
